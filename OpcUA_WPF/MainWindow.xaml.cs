@@ -26,8 +26,9 @@ namespace OpcUA_WPF
         {
             InitializeComponent();
             ListOfItemsOPC listOfItemsOPC = new ListOfItemsOPC();
-            OPC_UA = new OPC_UA_Client("192.168.8.227", 5000d, listOfItemsOPC.GetOPCitems());
+            OPC_UA = new OPC_UA_Client("192.168.1.17", 1000d, listOfItemsOPC.GetOPCitems());
             OPC_UA.ItemsChanged += OPC_UA_ItemsChanged;
+            
         }
         private async Task Task()
         {                      
@@ -40,20 +41,24 @@ namespace OpcUA_WPF
             //textBox.Text = itemDict["Application.PLC_PRG.val10"];
             Dispatcher.Invoke(() =>
             {
-                textBox.Text = itemDict["Application.PLC_PRG.val10"];
+                textBox.Text = itemDict["Application.PLC_PRG.diActualPosition"];
             });
         }
 
         private async void Window_Loaded(object sender, EventArgs e)
         {
-            
-            
-            
+
+            await Task();
+
         }
 
         private async void button_Click(object sender, RoutedEventArgs e)
         {
             await Task();
         }
+
+        
+
+        
     }
 }

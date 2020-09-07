@@ -10,9 +10,11 @@ namespace OPC_DA_Test
     {
         List<string> itemsList = new List<string>()
         {
-            "Application.PLC_PRG.val10",
-            "Application.PLC_PRG.val11",
-            "Application.PLC_PRG.val12"            
+            "Application.PLC_PRG.rSetForce",
+            "Application.PLC_PRG.iSpeed",
+            "Application.PLC_PRG.xStart",
+            "Application.PLC_PRG.xRelease",
+            "Application.PLC_PRG.diActualPosition"
         };
 
         public List<string> GetOPCitems()

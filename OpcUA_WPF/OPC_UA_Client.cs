@@ -59,6 +59,7 @@ namespace OpcUA_WPF
     
 
 
+
         public async Task SetChanel()
         {
             var clientDescription = new ApplicationDescription

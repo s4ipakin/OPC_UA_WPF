@@ -6,16 +6,18 @@
     xmlns:local="clr-namespace:OpcUA_WPF"
     xmlns:model="clr-namespace:OpcUA_WPF.ViewModel"   
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:src="clr-namespace:OpcUA_WPF.Converters"
      
     Title="MainWindow"
-    Width="800"
-    Height="450"
+    Width="1600"
+    Height="900"
     Activated="Window_Loaded"
     mc:Ignorable="d">
 
     <Window.DataContext>
         <local:MainViewModel/>
     </Window.DataContext>
+
 
     <Window.Resources>
         <Style TargetType="{x:Type CheckBox}" x:Key="myCheckboxStyle">
@@ -38,41 +40,56 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <src:ForceStateConvert x:Key="forceStateConvert"></src:ForceStateConvert>
+
     </Window.Resources>
 
-    <Grid>
-        <TextBox
-            x:Name="textBox"
-            Width="120"
-            Height="23"
-            Margin="216,66,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Text="TextBox"
-            
-            TextWrapping="Wrap" />
-        <TextBlock Text="{Binding ActualPosition, Mode=OneWay}" Height="32" VerticalAlignment="Top" Margin="216,112,383,0" />
-        <TextBox Text="{Binding SetForce, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="32" VerticalAlignment="Bottom" Margin="216,0,383,148" />
-        
-        <Button
-            x:Name="button"
-            Width="75"
-            Margin="216,168,0,0"
-            HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Click="button_Click"
-            Content="Button" />
+    <Grid OpacityMask="#FF0F0404">
+        <TextBlock Text="{Binding ActualPosition, Mode=OneWay}" Margin="152,219,0,0" Background="#FFF1E8E8" OpacityMask="#FF080808" HorizontalAlignment="Left" Width="156" Height="32" VerticalAlignment="Top" />
+        <TextBox Text="{Binding SetForce, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="32" VerticalAlignment="Top" Margin="0,28,606,0" HorizontalAlignment="Right" Width="120" />
         <CheckBox x:Name="checkBox" 
                   Style="{StaticResource myCheckboxStyle}"
-                  Content="CheckBox"
-                  IsChecked="{Binding Start, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0,168,0,148" HorizontalAlignment="Left" Width="180"
+                  Content=""
+                  IsChecked="{Binding Start, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="28,95,0,0" HorizontalAlignment="Left" Width="112" Height="84" VerticalAlignment="Top" RenderTransformOrigin="0.478,0.536"
                   />
 
         <CheckBox x:Name="checkBox1" 
                   Style="{StaticResource myCheckboxStyle}"
-                  Content="CheckBox"
-                  IsChecked="{Binding Release, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="101" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="216"
+                  Content=""
+                  IsChecked="{Binding Release, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Width="130" Margin="262,95,0,0" Height="84" VerticalAlignment="Top"
                   />
+        <TextBlock Text="{Binding ActualPosition, Mode=OneWay}" Height="32" VerticalAlignment="Top" Margin="152,299,0,0" Background="#FFF1E8E8" HorizontalAlignment="Left" Width="156" />
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="46,219,0,0" TextWrapping="Wrap" Text="Положение" Width="88" FontSize="16" Height="24" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="46,291,0,0" TextWrapping="Wrap" Text="Измерянная сила" VerticalAlignment="Top" Height="48" Width="102" FontSize="16"/>
+        <TextBlock x:Name="textBlock_Copy1" HorizontalAlignment="Left" Margin="633,36,0,0" TextWrapping="Wrap" Text="Сила" Width="88" FontSize="16" Height="24" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock_Copy2" HorizontalAlignment="Left" Margin="633,86,0,0" TextWrapping="Wrap" Text="Процент" Width="139" FontSize="16" Height="24" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock_Copy3" HorizontalAlignment="Left" Margin="633,137,0,0" TextWrapping="Wrap" Text="Шаг" Width="62" FontSize="16" Height="24" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock_Copy4" HorizontalAlignment="Left" Margin="633,185,0,0" TextWrapping="Wrap" Text="Чувствительность" Width="139" FontSize="16" Height="24" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock_Copy5" HorizontalAlignment="Left" Margin="633,234,0,0" TextWrapping="Wrap" Text="Скорость" Width="139" FontSize="16" Height="24" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock_Copy6" HorizontalAlignment="Left" Margin="633,282,0,0" TextWrapping="Wrap" Text="Ускорение" Width="139" FontSize="16" Height="24" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock_Copy7" HorizontalAlignment="Left" Margin="633,334,0,0" TextWrapping="Wrap" Text="Торможение" Width="139" FontSize="16" Height="24" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding RoughApprox, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="32" VerticalAlignment="Top" Margin="0,78,606,0" HorizontalAlignment="Right" Width="120" />
+        <TextBox Text="{Binding Step, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="32" VerticalAlignment="Top" Margin="0,137,606,0" HorizontalAlignment="Right" Width="120" />
+        <TextBox Text="{Binding Sensativity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="32" VerticalAlignment="Top" Margin="0,185,606,0" HorizontalAlignment="Right" Width="120" />
+        <TextBox Text="{Binding SetSpeed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="32" VerticalAlignment="Top" Margin="0,234,606,0" HorizontalAlignment="Right" Width="120" />
+        <TextBox Text="{Binding SetAcceleration, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="32" VerticalAlignment="Top" Margin="0,282,606,0" HorizontalAlignment="Right" Width="120" />
+        <TextBox Text="{Binding SetDeceleration, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="32" VerticalAlignment="Top" Margin="0,334,606,0" HorizontalAlignment="Right" Width="120" />
+        <TextBlock x:Name="textBlock_Copy8" HorizontalAlignment="Left" Margin="24,71,0,0" TextWrapping="Wrap" Text="Применить силу" Width="139" FontSize="16" Height="24" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock_Copy9" HorizontalAlignment="Left" Margin="281,69,0,0" TextWrapping="Wrap" Text="Отпустить" Width="88" FontSize="16" Height="24" VerticalAlignment="Top"/>
+        <CheckBox x:Name="checkBox_Copy" 
+            Style="{StaticResource myCheckboxStyle}"
+            Content=""
+            IsChecked="{Binding JogLeft, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="28,0,0,313" HorizontalAlignment="Left" Width="112" Height="84" VerticalAlignment="Bottom" RenderTransformOrigin="0.478,0.536"
+                  />
+        <CheckBox x:Name="checkBox_Copy1" 
+            Style="{StaticResource myCheckboxStyle}"
+            Content=""
+            IsChecked="{Binding JogRight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="257,0,0,313" HorizontalAlignment="Left" Width="112" Height="84" VerticalAlignment="Bottom" RenderTransformOrigin="0.478,0.536"
+                  />
+        <TextBlock x:Name="textBlock_Copy10" HorizontalAlignment="Left" Margin="24,0,0,390" TextWrapping="Wrap" Text="Двигать влево" Width="139" FontSize="16" Height="24" VerticalAlignment="Bottom"/>
+        <TextBlock x:Name="textBlock_Copy11" HorizontalAlignment="Left" Margin="253,0,0,390" TextWrapping="Wrap" Text="Двигать вправо" Width="139" FontSize="16" Height="24" VerticalAlignment="Bottom"/>
+        <TextBlock x:Name="textBlock_Copy12" HorizontalAlignment="Left" Margin="46,0,0,235" TextWrapping="Wrap" Text="{Binding Path=FS_State, Converter={StaticResource forceStateConvert}}" Width="262" FontSize="16" Height="24" VerticalAlignment="Bottom"/>
 
     </Grid>
 </Window>

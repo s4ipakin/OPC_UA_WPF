@@ -140,6 +140,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\ForceStateConvert.cs" />
     <Compile Include="MainViewModel.cs" />
     <Compile Include="ViewModel\MainWindowModel.cs" />
     <Page Include="MainWindow.xaml">
